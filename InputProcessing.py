@@ -12,6 +12,7 @@ class Monomer_Geom:
         self.name = filename
         self.read_coordinates()
         self.calculate_center_of_mass()
+        
     # Read coordinates from file
     def read_coordinates(self):
         self.coords = []
@@ -43,10 +44,12 @@ class Monomer_Geom:
         self.center_of_mass = np.average(self.coords, axis = 0, weights = self.mass)
         self.center_of_mass = np.round(self.center_of_mass, 5)
         return self.center_of_mass
+    
     # Shift the coordinates to the center of mass
     def shift_to_center_of_mass(self):
         self.shifted_coords = self.coords - self.center_of_mass
         return self.shifted_coords
+    
     # Create dataframe to print the coordinates
     def display_coordinates(self):
         self.df = pd.DataFrame(self.coords, columns=['X', 'Y', 'Z'])
