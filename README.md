@@ -3,10 +3,9 @@
 Generate various dimer configuarations by rotating and translating the monomers. Completely written in Python 3.
 
 ### Features
-- Duplicate monomer geometry
-- Calculate center of mass and move the molecule to center of mass
-- Translate duplicate monomer along all directions
-- Rotate duplicate monomer about all axes
+- Calculate center of mass and move the monomer to center of mass
+- Translate the duplicate monomer along all directions
+- Rotate the duplicate monomer about all axes
 
 Note that the program only supports .xyz files as input right now. Support for more extensions will be added soon!
 
