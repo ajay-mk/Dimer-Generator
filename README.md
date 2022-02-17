@@ -15,12 +15,14 @@ Note that the program only supports .xyz files as input right now. Support for m
 - Pandas
 - [Mendeleev](https://pypi.org/project/mendeleev/)
 
-If you find a bug, let me know at ajaymk16@iisertvm.ac.in
+If you find a bug, drop me an email.
 
 You are welcome to contribute to the project! Please fork the repo and submit a pull request.
 
-#### Author:
+#### Author Info:
 [Ajay Melekamburath](https://ajay-mk/github.io)
+
+ajaymk16@iisertvm.ac.in
 
 Follow me: 
 [Github](https://github.com/ajay-mk) | [Twitter](https://twitter.com/ajay-mk)
