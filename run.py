@@ -94,12 +94,12 @@ Output(dimer.coords, dimer.atoms).display_coordinates()
 
 #Saving the output
 print()
-save_file = input("Do you want save the coordinates as csv file? (y/n): ")
+save_file = input("Do you want save the coordinates as xyz file? (y/n): ")
 if save_file == 'y':
     save_file = input("Please provide the file name for saving the coordinates: ")
-    Output(dimer.coords, dimer.atoms).save_coordinates(save_file+'.csv')
+    Output(dimer.coords, dimer.atoms).save_coordinates(save_file+'.xyz', input_file+'_dimer', len(dimer.atoms))
     print()
-    print("The coordinates have been saved to {}.csv!!".format(save_file))
+    print("The coordinates have been saved to {}.xyz!!".format(save_file))
     print()
 
 

@@ -6,6 +6,7 @@ Generate various dimer configuarations by rotating and translating the monomers.
 - Calculate center of mass and move the monomer to center of mass
 - Translate the duplicate monomer along all directions
 - Rotate the duplicate monomer about all axes
+- Save the dimer geometry in a .xyz file
 
 
 ### Usage
@@ -16,7 +17,7 @@ python run.py input1.xyz
 
 ### Few important points
 - Note that the outputs are rounded of to the 5<sup>th</sup> decimal place
-- Note that the program only supports .xyz files as input right now (for example, see ```input0.xyz```).
+- Note that the program only supports .xyz files as input and output right now (for example, see ```input0.xyz```).
 - Support for more extensions will be added soon!
 
 ### Requirements

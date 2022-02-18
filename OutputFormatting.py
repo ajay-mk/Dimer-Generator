@@ -22,6 +22,8 @@ class Output:
         print(self.df.to_string(index=False))
         return self.df
     
-    def save_coordinates(self, filename):
-        self.df.to_csv(filename, index=False)
-        return self.df
+    def save_coordinates(self, filename, monomer_name, dimer_atom_count):
+        with open(filename, 'w') as f:
+            f.write('{}\n{}\n'.format(dimer_atom_count, monomer_name))
+            f.write(self.df.to_string(index=False, header=False))
+            f.write('\n')

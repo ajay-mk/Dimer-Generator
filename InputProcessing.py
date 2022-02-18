@@ -31,7 +31,7 @@ class Monomer_Geom:
                     self.coords.append([float(line[1]), float(line[2]), float(line[3])])
         self.coords = np.round(np.array(self.coords), 5)
         self.atoms = np.array(self.atoms)
-        return self.num_atoms, self.title, self.coords, self.atoms
+        return self.num_atoms, self.name, self.coords, self.atoms
     
     # Calculate Center of Mass
     def calculate_center_of_mass(self):
