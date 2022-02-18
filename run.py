@@ -7,11 +7,12 @@
 # This files controls the workflow of the program
 
 import sys
-from InputProcessing import *
-from GenerateDimer import *
-from Rotation import *
-from Translation import *
-from OutputFormatting import *
+from drivers.InputProcessing import *
+from drivers.GenerateDimer import *
+from drivers.Rotation import *
+from drivers.Translation import *
+from drivers.OutputFormatting import *
+from drivers.GenerateDimer import *
 
 # Printing some information
 print()
