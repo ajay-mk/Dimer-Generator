@@ -31,7 +31,6 @@ else:
 print("Geometry obtained from: {}".format(input_file))
 
 # Input reading and processing
-
 monomer = Monomer_Geom(input_file)
 reference_coords = monomer.coords
 monomer.calculate_center_of_mass()
@@ -41,10 +40,6 @@ print()
 print('The coordinates of the center of mass are: {}'.format(monomer.center_of_mass))
 print()
 
-
-def Move_to_CoM(coords):
-    """Function to move the coordinates to the center of mass"""
-    
 
 if (np.array(monomer.center_of_mass) == np.array((0, 0, 0))).all():
     print()
