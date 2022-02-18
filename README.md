@@ -9,6 +9,13 @@ Generate various dimer configuarations by rotating and translating the monomers.
 
 Note that the program only supports .xyz files as input right now (for example, see ```input.xyz```). Support for more extensions will be added soon!
 
+### Usage
+- Run the `run.py` file with input file as the first argument.
+```bash
+python run.py input1.xyz
+```
+- The program will ask you to input the necessary information for the transformations.
+
 ### Requirements
 - NumPy
 - Pandas
