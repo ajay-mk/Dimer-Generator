@@ -16,7 +16,9 @@ Note that the program only supports .xyz files as input right now (for example, 
 
 Install the required packages using
 
-```pip install -r requirements.txt```
+```bash
+pip install -r requirements.txt
+```
 
 If you find a bug, drop me an email.
 
