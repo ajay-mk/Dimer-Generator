@@ -16,9 +16,10 @@ class Translate:
         
     def translate_coordinates(self):
         self.translation_direction = np.tile(self.translation_direction, (len(self.coords), 1))
-        self.translated_coords = self.coords + (self.distance * self.translation_direction)
-        self.translate_coordinates = np.round(self.translated_coords, 5)
+        self.translated_coords = np.add(self.coords, (self.distance * self.translation_direction))
+        self.translated_coords = np.round(self.translated_coords, 5)
         return self.translated_coords
+    
     def translation_directions(self):
         if self.axis == 'x' or self.axis == 'X':
             self.translation_direction = [1, 0, 0]
