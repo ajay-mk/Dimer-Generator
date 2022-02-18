@@ -29,7 +29,7 @@ class Monomer_Geom:
                 if line:
                     self.atoms.append(line[0])
                     self.coords.append([float(line[1]), float(line[2]), float(line[3])])
-        self.coords = np.array(self.coords)
+        self.coords = np.round(np.array(self.coords), 5)
         self.atoms = np.array(self.atoms)
         return self.num_atoms, self.title, self.coords, self.atoms
     
