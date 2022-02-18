@@ -7,14 +7,17 @@ Generate various dimer configuarations by rotating and translating the monomers.
 - Translate the duplicate monomer along all directions
 - Rotate the duplicate monomer about all axes
 
-Note that the program only supports .xyz files as input right now (for example, see ```input.xyz```). Support for more extensions will be added soon!
 
 ### Usage
-- Run the `run.py` file with input file as the first argument.
+- Run the `run.py` file with input file as the first argument. The program will ask you to input the necessary information for the transformations.
 ```bash
 python run.py input1.xyz
 ```
-- The program will ask you to input the necessary information for the transformations.
+
+### Few important points
+- Note that the outputs are rounded of to the 5th decimal place
+- Note that the program only supports .xyz files as input right now (for example, see ```input0.xyz```). 
+- Support for more extensions will be added soon!
 
 ### Requirements
 - NumPy
