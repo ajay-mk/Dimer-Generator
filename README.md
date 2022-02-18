@@ -14,6 +14,8 @@ Note that the program only supports .xyz files as input right now (for example, 
 - Pandas
 - [Mendeleev](https://pypi.org/project/mendeleev/)
 
+Install the required packages using ```pip install -r requirements.txt```
+
 If you find a bug, drop me an email.
 
 You are welcome to contribute to the project! Please fork the repo and submit a pull request.
