@@ -12,12 +12,12 @@ Generate various dimer configuarations by rotating and translating the monomers.
 ### Usage
 - Run the `run.py` file with input file as the first argument. The program will ask you to input the necessary information for the transformations.
 ```bash
-python run.py input1.xyz
+python run.py input_sample/input1.xyz
 ```
 
 ### Few important points
 - Note that the outputs are rounded of to the 5<sup>th</sup> decimal place
-- Note that the program only supports .xyz files as input and output right now (for example, see ```input0.xyz```).
+- Note that the program only supports .xyz files as input and output right now (for examples, see `input_samples`).
 - Support for more extensions will be added soon!
 
 ### Requirements
