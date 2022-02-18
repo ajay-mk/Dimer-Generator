@@ -3,7 +3,7 @@
 
 # This file contains the class and functions for input processing
 
-import numpy as np, pandas as pd
+import numpy as np
 from mendeleev import element # https://pypi.org/project/mendeleev/
 
 class Monomer_Geom:
@@ -49,13 +49,4 @@ class Monomer_Geom:
     def shift_to_center_of_mass(self):
         self.shifted_coords = self.coords - self.center_of_mass
         return self.shifted_coords
-    
-    # Create dataframe to print the coordinates
-    def display_coordinates(self):
-        self.df = pd.DataFrame(self.coords, columns=['X', 'Y', 'Z'])
-        self.df.insert(0, 'Atom', self.atoms)
-        self.df = self.df.reset_index(drop=True)
-        print("Geometry obtained from {} \n" .format(self.name))
-        print(self.df.to_string(index=False))
-        return self.df
-    
+
