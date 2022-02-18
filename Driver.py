@@ -11,14 +11,13 @@ from InputProcessing import *
 from GenerateDimer import *
 from Rotation import *
 from Translation import *
+from OutputFormatting import *
 
 # Printing some information
 print("*** *** *** *** ***")
-print()
 print("Dimer Generator")
 print("by @ajay-mk")
 print("Visit: https://github.com/ajay-mk/Dimer-Generator")
-print()
 print("*** *** *** *** ***")
 
 if (sys.argv[1]).endswith('.xyz'):
@@ -27,12 +26,30 @@ else:
     print("Please provide an input file in xyz format")
     sys.exit()
 
-print("Input file:", input_file)
+print("Geometry obtained from: {}".format(input_file))
 
 monomer = Monomer_Geom(input_file)
 monomer.calculate_center_of_mass()
+mono_coords = monomer.coords
 print()
-monomer.display_coordinates()
+DisplayCoordinates(mono_coords, monomer.atoms)
 print()
-print('The coordinates of the center of mass are:')
-print(monomer.center_of_mass)
+print('The coordinates of the center of mass are: {}'.format(monomer.center_of_mass))
+print()
+
+if (np.array(monomer.center_of_mass) == np.array((0, 0, 1))).all():
+    print()
+    print("The center of mass is at the origin.")
+else:
+    move_to_com = input("Would you like to move the coordinates to the center of mass? (y/n): ")
+    if move_to_com == 'y':
+        monomer.shift_to_center_of_mass()
+        mono_coords = monomer.shifted_coords
+        print()
+        print("The coordinates have been shifted to the center of mass.")
+        print()
+        DisplayCoordinates(mono_coords, monomer.atoms)
+    if move_to_com == 'n':
+        print()
+        print("The coordinates will be in the original frame")
+
