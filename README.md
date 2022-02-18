@@ -12,7 +12,7 @@ Generate various dimer configuarations by rotating and translating the monomers.
 ### Usage
 - Run the `run.py` file with input file as the first argument. The program will ask you to input the necessary information for the transformations.
 ```bash
-python run.py input_sample/input1.xyz
+python run.py input_samples/input1.xyz
 ```
 
 ### Few important points
