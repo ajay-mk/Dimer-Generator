@@ -5,6 +5,7 @@
 # If it is useful, I would appreciate an acknowledgment to the author
 
 # This files controls the workflow of the program
+# This program makes use of the argumets provided by the user in the command line
 
 import sys
 from drivers.InputProcessing import *
@@ -13,25 +14,26 @@ from drivers.Rotation import *
 from drivers.Translation import *
 from drivers.OutputFormatting import *
 from drivers.GenerateDimer import *
+import argparse
 
-# Printing some information
-print()
-print("*** *** *** *** ***")
-print("Dimer Generator")
-print("by @ajay-mk")
-print("Visit: https://github.com/ajay-mk/Dimer-Generator")
-print("*** *** *** *** ***")
-print()
+parser = argparse.ArgumentParser(description='Inputting the parameters for transforming the dimer.')
+parser.add_argument('-i', '--input_file', help='Input file in xyz format', required=True, type=str, metavar='')
+parser.add_argument('-c', '--com_to_origin', help='Specify if centre of mass is translated to origin (y/n)', required=False, type=str, metavar='', default='n')
+parser.add_argument('-t', '--translate', help='Input translation direction', required=False, type=str, metavar='')
+parser.add_argument('-td', '--translation_distance', help='Input translation distance', required=False, type=float, metavar='')
+parser.add_argument('-r', '--rotate', help='Input rotation axis', required=False, type=str, metavar='')
+parser.add_argument('-ra', '--rotation_angle', help='Input rotation angle in degrees', required=False, type=float, metavar='')
+args = parser.parse_args()
 
-if (sys.argv[1]).endswith('.xyz'):
-    input_file = sys.argv[1]
+if (args.input_file).endswith('.xyz'):
+    input_file = args.input_file
 else:
+    print()
     print("Please provide an input file in xyz format")
     sys.exit()
 
 print("Geometry obtained from: {}".format(input_file))
 
-# Input reading and processing
 monomer = Monomer_Geom(input_file)
 reference_coords = monomer.coords
 monomer.calculate_center_of_mass()
@@ -46,62 +48,49 @@ if (np.array(monomer.center_of_mass) == np.array((0, 0, 0))).all():
     print()
     print("The center of mass is at the origin.")
 else:
-    move_to_com = input("Would you like to move center of mass to the origin? (y/n): ")
-    if move_to_com == 'y':
+    if args.com_to_origin == 'y':
         monomer.shift_to_center_of_mass()
         reference_coords = monomer.shifted_coords
         print()
         print("The centre of mass has been shifted to the origin.")
         print()
         Output(reference_coords, monomer.atoms).display_coordinates()
-    if move_to_com == 'n':
+    if args.com_to_origin == 'n':
         print()
         print("The coordinates will be in the original frame")
         print()
-        
-# Translation
-print()
-translation = input("Do you want to translate the molecule? (y/n): ")
-print()
-if translation == 'y':
-    trans_dir = input("Please provide the direction (x, y, z): ")
-    trans_distance = float(input("Please provide the distance for translation (in same units as the coordinates): "))
+
+if args.translate == 'x' or args.translate == 'y' or args.translate == 'z':
+    trans_dir = args.translate
+    trans_distance = args.translation_distance
     translated_monomer = Translate(reference_coords, trans_dir, trans_distance)
     modified_coords = translated_monomer.translated_coords
-if translation == 'n':
+else:
     translated_monomer = Translate(reference_coords, 'z', 0)
     modified_coords = translated_monomer.translated_coords
     
-    
-# Rotation
-print()
-rotation = input("Do you want to rotate the molecule? (y/n): ")
-print()
-if rotation == 'y':
-    rotate_axis = input("Please provide the axis of rotation (x, y, z): ")
-    rotate_angle = float(input("Please provide the angle for rotation (in degrees): "))
+if args.rotate == 'x' or args.rotate == 'y' or args.rotate == 'z':
+    rotate_axis = args.rotate
+    rotate_angle = args.rotation_angle
     rotate_angle = np.deg2rad(rotate_angle)
     rotated_monomer = Rotate(modified_coords, rotate_axis, rotate_angle)
     modified_coords = rotated_monomer.rotated_coords
-if rotation == 'n':
+else:
     rotated_monomer = Rotate(modified_coords, 'z', 0)
     modified_coords = rotated_monomer.rotated_coords
-
+    
+    
+    
+    
 print()
 print("The final coordinates are:")
 print()
 dimer = Dimer_Geom(reference_coords, modified_coords, monomer.atoms, monomer.atoms)
 Output(dimer.coords, dimer.atoms).display_coordinates()
 
-#Saving the output
 print()
-save_file = input("Do you want save the coordinates as xyz file? (y/n): ")
-if save_file == 'y':
-    save_file = input("Please provide the file name for saving the coordinates: ")
-    Output(dimer.coords, dimer.atoms).save_coordinates(save_file+'.xyz', input_file+'_dimer', len(dimer.atoms))
-    print()
-    print("The coordinates have been saved to {}.xyz!!".format(save_file))
-    print()
-
-
-### End of Program ###
+save_file = args.input_file.split('.')[0] + '_dimer'
+Output(dimer.coords, dimer.atoms).save_coordinates(save_file+'.xyz', input_file+'_dimer', len(dimer.atoms))
+print()
+print("The coordinates have been saved to {}.xyz!!".format(save_file))
+print()
