@@ -35,7 +35,7 @@ python run.py input_samples/input1.xyz
   ```bash
     python run_args.py -i input_samples/input1.xyz -c y -t x -td 1.0 -r y -ra 90.0
   ```
-- The output geometry is saved into `INPUT_FILENAME_dimer.xyz` file by default.
+- The output geometry is saved into `input_filename_td_ra_dimer.xyz` file by default.
 - Run `python run_args.py -h` or `python run_args.py --help` for more information.
 
 
