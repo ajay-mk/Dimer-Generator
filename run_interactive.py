@@ -99,8 +99,9 @@ Output(dimer.coords, dimer.atoms).display_coordinates()
 print()
 save_file = input("Do you want save the coordinates as xyz file? (y/n): ")
 if save_file == 'y':
-    save_file = input("Please provide the file name for saving the coordinates: ")
-    Output(dimer.coords, dimer.atoms).save_coordinates(save_file+'.xyz', input_file+'_dimer', len(dimer.atoms))
+    save_file = input("Enter the name of the file to save the dimer: ")
+    save_file = save_file+'_dimer'
+    Output(dimer.coords, dimer.atoms).save_coordinates(save_file+'.xyz', save_file, len(dimer.atoms))
     print()
     print("The coordinates have been saved to {}.xyz!!".format(save_file))
     print()
