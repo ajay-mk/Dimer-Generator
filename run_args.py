@@ -89,8 +89,9 @@ dimer = Dimer_Geom(reference_coords, modified_coords, monomer.atoms, monomer.ato
 Output(dimer.coords, dimer.atoms).display_coordinates()
 
 print()
-save_file = args.input_file.split('.')[0] + '_{}_{}_dimer'.format(args.translation_distance, args.rotation_angle)
-Output(dimer.coords, dimer.atoms).save_coordinates(save_file+'.xyz', input_file+'_dimer', len(dimer.atoms))
+save_file = input("Enter the name of the file to save the dimer coordinates: ")
+save_file = save_file+'_dimer'
+Output(dimer.coords, dimer.atoms).save_coordinates(save_file+'.xyz', save_file, len(dimer.atoms))
 print()
 print("The coordinates have been saved to {}.xyz!!".format(save_file))
 print()
